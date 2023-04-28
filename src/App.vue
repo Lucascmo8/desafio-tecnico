@@ -1,16 +1,15 @@
 <template>
-  <header>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/savedTasks">Tarefas salvas</RouterLink>
-      </nav>
-  </header>
-
+  <NavBar />
   <RouterView />
 </template>
 
 <script>
-
+  import NavBar from './components/NavBar.vue';
+  export default{
+    components:{
+      NavBar
+    }
+  }
 </script>
 
 <style>
