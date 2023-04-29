@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="cardContainer" :class="{'isVisibleDescription': isVisibleDescription,'isTaskDone': isTaskDone }">
+        <div class="cardContainer" :class="{'isVisibleDescription': isVisibleDescription,'isTaskDone': isDone }">
             <div class="titleAndToggleDescription">
                 <button @click.prevent="toogleDescription">
                     <i class="uil uil-angle-down" v-if="!isVisibleDescription"></i>
                     <i class="uil uil-angle-up" v-else></i>
                 </button>
-                <h3>123456789012345</h3>
+                <h3>{{ title }}</h3>
             </div>
             <div class="btnTaskContainer">
                 <button class="btnTask done" v-if="!isTaskDone">Concluir</button>
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="description" :class="{'isTaskDone': isTaskDone }" v-if="isVisibleDescription">
-            <p>Não há descrição da tarefa</p>
+            <p>{{ description }}</p>
         </div>
     </div>
 </template>
@@ -29,6 +29,7 @@
                 isTaskDone:false
             }
         },
+        props:['title','description','isDonde'],
         methods:{
             toogleDescription(){
                 this.isVisibleDescription = !this.isVisibleDescription

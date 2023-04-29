@@ -5,6 +5,7 @@ export const useTasksStore = defineStore('tasks', {
     state(){
         return{
             showFormCreateTask:false,
+            allTasksCreated:JSON.parse(localStorage.getItem('tasks')) ?? []
         }
     },
     actions: {
@@ -19,25 +20,25 @@ export const useTasksStore = defineStore('tasks', {
         },
         createTaskCloseForm(titleTask,descriptionTask){
             const task={
-                titleTask:titleTask,
-                descriptionTask:descriptionTask.trim() ?? "Não há descrição da tarefa",
+                title:titleTask,
+                description:descriptionTask ?? "Não há descrição da tarefa",
                 isDone:false
             }
-            this.addTaskLocalStorage(task)
+            this.addTask(task)
             this.closeFormCreateTask()
         },
-        addTaskLocalStorage(task){
+        addTask(task){
             const allTasks = this.getTasksLocalStorage()
             allTasks.push(task)
-            return localStorage.setItem("tasks",JSON.stringify(allTasks))
+            this.addTaskLocalStorage(allTasks)
         },
-        deleteTask(indexTask){
-            
-        },  
-        reloadTask(evento,numeroDoPedido){
-            
+        addTaskLocalStorage(tasks){
+            localStorage.setItem("tasks",JSON.stringify(tasks))
+            this.updateTaskList()
+        },
+        updateTaskList(){
+            this.allTasksCreated = this.getTasksLocalStorage()
         }
-
     },
     getters:{
     

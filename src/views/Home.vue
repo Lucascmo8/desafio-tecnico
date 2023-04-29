@@ -2,9 +2,9 @@
   <main>
     <BtnOpenForm />
     <Teleport to="body">
-      <FormCreatedTask />
+      <FormCreatedTask v-if="tasksStores.showFormCreateTask"/>
     </Teleport>
-    <TasksList />
+    <TasksList/>
   </main>
 </template>
 
@@ -12,8 +12,13 @@
   import BtnOpenForm from '../components/BtnOpenForm.vue'
   import FormCreatedTask from '../components/FormCreatedTask.vue';
   import TasksList from '../components/TasksList.vue';
+  import { useTasksStore } from '../stores/TasksStore';
 
   export default {
+    setup(){
+      const tasksStores = useTasksStore()
+      return {tasksStores}
+    },
     components:{
       BtnOpenForm,
       FormCreatedTask,

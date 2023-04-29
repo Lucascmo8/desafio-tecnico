@@ -1,24 +1,25 @@
 <template>
     <section id="tasksList">
-        <CardTask/>
-        <CardTask/>
-        
+        <EmptyListMessage v-if="tasksStores.allTasksCreated.length == 0"/>
+        <CardTask v-for="(task,index) in tasksStores.allTasksCreated" :key="index" :title="task.title" :description="task.description" :isDone="task.isDone"/>
     </section>
 </template>
 
 <script>
-import CardTask from './CardTask.vue'
+    import CardTask from './CardTask.vue'
+    import EmptyListMessage from './EmptyListMessage.vue';
+    import { useTasksStore } from '../stores/TasksStore';
 
     export default{
         name:"TasksList",
-        data(){
-            return{
-                
-            }
+        setup(){
+            const tasksStores = useTasksStore()
+            return {tasksStores}
         },
         components:{
             CardTask,
-        }
+            EmptyListMessage,
+        },
     }
 
 </script>

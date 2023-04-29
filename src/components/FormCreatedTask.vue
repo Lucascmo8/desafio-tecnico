@@ -1,11 +1,11 @@
 <template>
-    <div id="modalForm" v-if="tasksStores.showFormCreateTask">
+    <div id="modalForm" >
         <button id="btnCloseForm" @click="tasksStores.closeFormCreateTask"><i class="uil uil-times"></i></button>
         <form id="FormCreateTask" @submit.prevent="tasksStores.createTaskCloseForm(titleTask,descriptionTask)">
             <h2>Preencha os campos abaixo:</h2>
             <input id="titleTaskInput" type="text" placeholder="Título da tarefa" maxlength="15" required v-model="titleTask">
             <textarea name="" id="descriptionTaskInput" placeholder="Descreva os detalhes da tarefa" v-model="descriptionTask"></textarea>
-            <button id="btnSubmit" type="submit" @click="cleanForm">Criar Tarefa <i class="uil uil-focus-add"></i></button>
+            <button id="btnSubmit" type="submit" >Criar Tarefa <i class="uil uil-focus-add"></i></button>
         </form>
     </div>
 </template>
@@ -22,13 +22,6 @@
             return{
                 titleTask:"",
                 descriptionTask:undefined,
-            }
-        },
-        methods:{
-            cleanForm(){
-                this.titleTask = ""
-                this.descriptionTask = undefined
-                this.tasksStores.closeFormCreateTask()
             }
         }
     }
