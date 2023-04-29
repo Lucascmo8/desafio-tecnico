@@ -1,10 +1,15 @@
 <template>
-    <button>Criar Tarefa <i class="uil uil-focus-add"></i></button>
+    <button @click="tasksStores.openFormCreateTask">Criar Tarefa <i class="uil uil-focus-add"></i></button>
 </template>
 
 <script>
+    import { useTasksStore } from '../stores/TasksStore';
     export default {
-        name:"BtnOpenForm"
+        name:"BtnOpenForm",
+        setup(){
+            const tasksStores = useTasksStore()
+            return {tasksStores}
+        },
     }
 </script>
 

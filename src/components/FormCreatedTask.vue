@@ -1,29 +1,41 @@
 <template>
-    <div class="modalForm" v-show="false">
-        <button id="btnCloseForm"><i class="uil uil-times"></i></button>
-        <form id="FormCreateTask" @submit.prevent="">
+    <div id="modalForm" v-if="tasksStores.showFormCreateTask">
+        <button id="btnCloseForm" @click="tasksStores.closeFormCreateTask"><i class="uil uil-times"></i></button>
+        <form id="FormCreateTask" @submit.prevent="tasksStores.createTaskCloseForm(titleTask,descriptionTask)">
             <h2>Preencha os campos abaixo:</h2>
-            <input id="titleTaskInput" type="text" placeholder="Título da tarefa" required v-model="titleTask">
+            <input id="titleTaskInput" type="text" placeholder="Título da tarefa" maxlength="15" required v-model="titleTask">
             <textarea name="" id="descriptionTaskInput" placeholder="Descreva os detalhes da tarefa" v-model="descriptionTask"></textarea>
-            <button id="btnSubmit" type="submit">Criar Tarefa <i class="uil uil-focus-add"></i></button>
+            <button id="btnSubmit" type="submit" @click="cleanForm">Criar Tarefa <i class="uil uil-focus-add"></i></button>
         </form>
     </div>
 </template>
-<!-- cols="30" rows="10"  -->
+
 <script>
+    import { useTasksStore } from '../stores/TasksStore';
     export default{
         name:"FormCreatedTask",
+        setup(){
+            const tasksStores = useTasksStore()
+            return {tasksStores}
+        },
         data(){
             return{
                 titleTask:"",
-                descriptionTask:"",
+                descriptionTask:undefined,
+            }
+        },
+        methods:{
+            cleanForm(){
+                this.titleTask = ""
+                this.descriptionTask = undefined
+                this.tasksStores.closeFormCreateTask()
             }
         }
     }
 </script>
 
 <style scoped>
-    .modalForm{
+    #modalForm{
         @apply h-screen w-screen absolute top-0 left-0 z-50 bg-[#00000088] flex flex-col 
     }
 
@@ -32,7 +44,7 @@
     }
 
     #FormCreateTask{
-        @apply h-auto w-10/12 sm:w-96 flex flex-col items-center bg-white rounded-lg shadow-md gap-2 text-black px-2 py-4 self-center justify-self-center
+        @apply h-auto w-10/12 sm:w-96 flex flex-col items-center bg-white  rounded-lg shadow-md gap-2 text-black px-2 py-4 self-center justify-self-center
     }
 
     #titleTaskInput{
@@ -41,6 +53,10 @@
 
     #descriptionTaskInput{
         @apply  w-11/12 h-32 border border-black rounded-lg p-2 
+    }
+
+    i{
+        @apply text-white
     }
 
     #btnSubmit{

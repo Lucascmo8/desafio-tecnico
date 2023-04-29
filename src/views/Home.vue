@@ -1,8 +1,9 @@
 <template>
   <main>
-    <h1>Olá mundo</h1>
     <BtnOpenForm />
-    <FormCreatedTask />
+    <Teleport to="body">
+      <FormCreatedTask />
+    </Teleport>
     <TasksList />
   </main>
 </template>
@@ -23,6 +24,6 @@
 
 <style scoped>
   main{
-    @apply h-screen w-screen bg-slate-950 py-20 px-4 text-white fixed z-40 overflow-y-auto
+    @apply h-screen w-screen bg-slate-950 pt-24 pb-10 px-4 text-white fixed overflow-y-auto
   }
 </style>

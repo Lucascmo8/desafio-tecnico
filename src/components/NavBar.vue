@@ -22,7 +22,7 @@
 
 <style scoped>
     header#navBar{
-        @apply w-full h-20 fixed top-0 left-0 p-4 z-50 bg-slate-900 text-white flex justify-between items-center shadow-md
+        @apply w-full h-20 fixed top-0 left-0 p-4 z-10 bg-slate-900 text-white flex justify-between items-center shadow-md
     }
     
     h1{
