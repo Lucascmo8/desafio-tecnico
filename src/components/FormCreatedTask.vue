@@ -3,8 +3,8 @@
         <button id="btnCloseForm"><i class="uil uil-times"></i></button>
         <form id="FormCreateTask" @submit.prevent="">
             <h2>Preencha os campos abaixo:</h2>
-            <input id="titleTaskInput" type="text" placeholder="Título da tarefa" required>
-            <textarea name="" id="descriptionTaskInput" placeholder="Descreva os detalhes da tarefa"></textarea>
+            <input id="titleTaskInput" type="text" placeholder="Título da tarefa" required v-model="titleTask">
+            <textarea name="" id="descriptionTaskInput" placeholder="Descreva os detalhes da tarefa" v-model="descriptionTask"></textarea>
             <button id="btnSubmit" type="submit">Criar Tarefa <i class="uil uil-focus-add"></i></button>
         </form>
     </div>
@@ -12,7 +12,13 @@
 <!-- cols="30" rows="10"  -->
 <script>
     export default{
-        name:"FormCreatedTask"
+        name:"FormCreatedTask",
+        data(){
+            return{
+                titleTask:"",
+                descriptionTask:"",
+            }
+        }
     }
 </script>
 
