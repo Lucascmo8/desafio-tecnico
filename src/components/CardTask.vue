@@ -9,27 +9,32 @@
                 <h3>{{ title }}</h3>
             </div>
             <div class="btnTaskContainer">
-                <button class="btnTask done" v-if="!isTaskDone">Concluir</button>
+                <button class="btnTask done" v-if="!isDone" @click="tasksStores.completeTask(tag)">Concluir</button>
                 <button class="btnTask save" v-else>Salvar</button>
-                <button class="btnTask delete">Excluir</button>
+                <button class="btnTask delete" @click="tasksStores.deleteTask(tag)">Excluir</button>
             </div>
         </div>
-        <div class="description" :class="{'isTaskDone': isTaskDone }" v-if="isVisibleDescription">
+        <div class="description" :class="{'isTaskDone': isDone }" v-if="isVisibleDescription">
             <p>{{ description }}</p>
         </div>
     </div>
 </template>
 
 <script>
+    import { useTasksStore } from '../stores/TasksStore';
     export default{
         name:"CardTask",
+        setup(){
+            const tasksStores = useTasksStore()
+            return {tasksStores}
+        },
         data(){
             return{
                 isVisibleDescription:false,
                 isTaskDone:false
             }
         },
-        props:['title','description','isDonde'],
+        props:['title','description','isDone','tag'],
         methods:{
             toogleDescription(){
                 this.isVisibleDescription = !this.isVisibleDescription

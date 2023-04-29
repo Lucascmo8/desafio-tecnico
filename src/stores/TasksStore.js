@@ -38,7 +38,18 @@ export const useTasksStore = defineStore('tasks', {
         },
         updateTaskList(){
             this.allTasksCreated = this.getTasksLocalStorage()
+        },
+        completeTask(tag){
+            const allTasks = this.getTasksLocalStorage()
+            allTasks[tag].isDone = true
+            this.addTaskLocalStorage(allTasks)
+        },
+        deleteTask(tag){
+            const allTasks = this.getTasksLocalStorage()
+            allTasks.splice(tag,1)
+            this.addTaskLocalStorage(allTasks)
         }
+
     },
     getters:{
     

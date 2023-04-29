@@ -1,7 +1,7 @@
 <template>
     <section id="tasksList">
         <EmptyListMessage v-if="tasksStores.allTasksCreated.length == 0"/>
-        <CardTask v-for="(task,index) in tasksStores.allTasksCreated" :key="index" :title="task.title" :description="task.description" :isDone="task.isDone"/>
+        <CardTask v-for="(task,index) in tasksStores.allTasksCreated" :key="index" :tag="index" :title="task.title" :description="task.description" :isDone="task.isDone"/>
     </section>
 </template>
 
