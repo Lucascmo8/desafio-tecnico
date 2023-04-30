@@ -10,7 +10,7 @@
             </div>
             <div class="btnTaskContainer">
                 <button class="btnTask done" v-if="!isDone" @click="tasksStores.completeTask(tag)">Concluir</button>
-                <button class="btnTask save" v-else>Salvar</button>
+                <button class="btnTask save" v-else @click="tasksStores.saveTask(tag)">Salvar</button>
                 <button class="btnTask delete" @click="tasksStores.deleteTask(tag)">Excluir</button>
             </div>
         </div>
@@ -66,7 +66,7 @@
     }
 
     .btnTask{
-        @apply bg-blue-700 text-white p-2 rounded-lg transition-all ease-in-out shadow-md hover:bg-blue-500 hover:scale-105
+        @apply w-20 bg-blue-700 text-white p-2 rounded-lg transition-all ease-in-out shadow-md hover:bg-blue-500 hover:scale-105
     }
 
     .done{

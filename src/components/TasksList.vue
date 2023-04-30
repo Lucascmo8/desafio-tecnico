@@ -1,7 +1,7 @@
 <template>
     <section id="tasksList">
-        <EmptyListMessage v-if="tasksStores.allTasksCreated.length == 0"/>
-        <CardTask v-for="(task,index) in tasksStores.allTasksCreated" :key="index" :tag="index" :title="task.title" :description="task.description" :isDone="task.isDone"/>
+        <EmptyListMessage v-if="tasks.length == 0"/>
+        <CardTask v-for="(task,index) in tasks" :key="index" :tag="index" :title="task.title" :description="task.description" :isDone="task.isDone"/>
     </section>
 </template>
 
@@ -16,6 +16,7 @@
             const tasksStores = useTasksStore()
             return {tasksStores}
         },
+        props:{tasks:Object},
         components:{
             CardTask,
             EmptyListMessage,
@@ -26,6 +27,6 @@
 
 <style scoped>
     #tasksList{
-        @apply h-auto sm:w-[520px] bg-slate-300 m-auto mt-16 flex flex-col gap-2 text-black rounded-lg p-2 shadow-md  overflow-y-auto
+        @apply h-auto sm:w-[520px] bg-slate-400 m-auto mt-16 flex flex-col gap-2 text-black rounded-lg p-2 shadow-md  overflow-y-auto
     }
 </style>

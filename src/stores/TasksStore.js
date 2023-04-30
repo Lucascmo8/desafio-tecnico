@@ -5,7 +5,7 @@ export const useTasksStore = defineStore('tasks', {
     state(){
         return{
             showFormCreateTask:false,
-            allTasksCreated:JSON.parse(localStorage.getItem('tasks')) ?? []
+            allTasksCreated:JSON.parse(localStorage.getItem('tasks')) ?? [],
         }
     },
     actions: {
@@ -48,6 +48,15 @@ export const useTasksStore = defineStore('tasks', {
             const allTasks = this.getTasksLocalStorage()
             allTasks.splice(tag,1)
             this.addTaskLocalStorage(allTasks)
+        },
+        getSavedTasksLocalStorage() {
+            return JSON.parse(localStorage.getItem('savedTasks')) ?? []
+        },
+        saveTask(tag){
+            const allSavedTasks = this.getSavedTasksLocalStorage()
+            allSavedTasks.push(this.getTasksLocalStorage()[tag])
+            this.deleteTask(tag)
+            localStorage.setItem("savedTasks",JSON.stringify(allSavedTasks))
         }
 
     },
