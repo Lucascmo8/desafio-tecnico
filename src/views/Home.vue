@@ -4,7 +4,7 @@
     <Teleport to="body">
       <FormCreatedTask v-if="tasksStores.showFormCreateTask"/>
     </Teleport>
-    <TasksList :tasks="tasksStores.allTasksCreated"/>
+    <TasksList :tasks="tasksStores.allTasksCreated" page="home"/>
   </main>
 </template>
 

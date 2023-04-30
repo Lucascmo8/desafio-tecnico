@@ -10,11 +10,11 @@
             </div>
             <div class="btnTaskContainer">
                 <button class="btnTask done" v-if="!isDone" @click="tasksStores.completeTask(tag)">Concluir</button>
-                <button class="btnTask save" v-else @click="tasksStores.saveTask(tag)">Salvar</button>
-                <button class="btnTask delete" @click="tasksStores.deleteTask(tag)">Excluir</button>
+                <button class="btnTask save" v-else v-show="page == 'home'" @click="tasksStores.saveTask(tag)">Salvar</button>
+                <button class="btnTask delete" @click="tasksStores.deleteTask(tag,page)">Excluir</button>
             </div>
         </div>
-        <div class="description" :class="{'isTaskDone': isDone }" v-if="isVisibleDescription">
+        <div :class="{'isTaskDone': isDone}" v-if="isVisibleDescription">
             <p>{{ description }}</p>
         </div>
     </div>
@@ -34,7 +34,7 @@
                 isTaskDone:false
             }
         },
-        props:['title','description','isDone','tag'],
+        props:['title','description','isDone','tag','page'],
         methods:{
             toogleDescription(){
                 this.isVisibleDescription = !this.isVisibleDescription

@@ -6,6 +6,7 @@ export const useTasksStore = defineStore('tasks', {
         return{
             showFormCreateTask:false,
             allTasksCreated:JSON.parse(localStorage.getItem('tasks')) ?? [],
+            allTasksSaved:JSON.parse(localStorage.getItem('savedTasks')) ?? [],
         }
     },
     actions: {
@@ -44,10 +45,18 @@ export const useTasksStore = defineStore('tasks', {
             allTasks[tag].isDone = true
             this.addTaskLocalStorage(allTasks)
         },
-        deleteTask(tag){
-            const allTasks = this.getTasksLocalStorage()
-            allTasks.splice(tag,1)
-            this.addTaskLocalStorage(allTasks)
+        deleteTask(tag,page){
+            if(page == 'home'){
+                const allTasks = this.getTasksLocalStorage()
+                allTasks.splice(tag,1)
+                this.addTaskLocalStorage(allTasks)
+                return
+            }else{
+                const allSavedTasks = this.getSavedTasksLocalStorage()
+                allSavedTasks.splice(tag,1)
+                this.addSavedTaskLocalStorage(allSavedTasks)
+            }
+            
         },
         getSavedTasksLocalStorage() {
             return JSON.parse(localStorage.getItem('savedTasks')) ?? []
@@ -55,9 +64,16 @@ export const useTasksStore = defineStore('tasks', {
         saveTask(tag){
             const allSavedTasks = this.getSavedTasksLocalStorage()
             allSavedTasks.push(this.getTasksLocalStorage()[tag])
-            this.deleteTask(tag)
+            this.deleteTask(tag,'home')
+            this.addSavedTaskLocalStorage(allSavedTasks)
+        },
+        addSavedTaskLocalStorage(allSavedTasks){
             localStorage.setItem("savedTasks",JSON.stringify(allSavedTasks))
-        }
+            this.updateSavedTaskList()
+        },
+        updateSavedTaskList(){
+            this.allTasksSaved = this.getSavedTasksLocalStorage()
+        },
 
     },
     getters:{
