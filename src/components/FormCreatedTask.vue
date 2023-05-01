@@ -34,7 +34,7 @@
 
 <style scoped>
     #modalForm{
-        @apply h-screen w-screen absolute top-0 left-0 z-50 bg-[#00000088] flex flex-col 
+        @apply h-screen w-screen absolute top-0 left-0 z-50 flex flex-col bg-[#00000088]
     }
 
     #btnCloseForm{
@@ -42,22 +42,22 @@
     }
 
     #FormCreateTask{
-        @apply h-auto w-10/12 sm:w-96 flex flex-col items-center bg-white  rounded-lg shadow-md gap-2 text-black px-2 py-4 self-center justify-self-center
+        @apply h-auto w-10/12 sm:w-96 px-2 py-4 flex flex-col gap-2 items-center self-center justify-self-center bg-white text-black rounded-lg shadow-md
     }
 
     #titleTaskInput{
-        @apply w-11/12 border border-black rounded-lg p-2
+        @apply w-11/12 p-2 border border-black rounded-lg
     }
 
     #descriptionTaskInput{
-        @apply  w-11/12 h-32 border border-black rounded-lg p-2 
+        @apply h-32 w-11/12 p-2 border border-black rounded-lg 
     }
 
-    i{
+    #btnCloseForm{
         @apply text-white
     }
 
     #btnSubmit{
-        @apply w-11/12 bg-blue-700 text-white p-2 rounded-lg transition-all ease-in-out shadow-md float-right hover:bg-blue-500 hover:scale-105
+        @apply w-11/12 p-2 float-right bg-blue-700 text-white rounded-lg shadow-md transition-all ease-in-out hover:bg-blue-500 hover:scale-105
     }
 </style>

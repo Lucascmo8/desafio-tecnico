@@ -6,6 +6,6 @@
 
 <style scoped>
     .emptyListMessage{
-        @apply bg-slate-100 text-center rounded-lg p-2 shadow-md 
+        @apply p-2 bg-slate-100 text-center rounded-lg shadow-md 
     }
 </style>

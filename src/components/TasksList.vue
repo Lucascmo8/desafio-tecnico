@@ -27,6 +27,6 @@
 
 <style scoped>
     #tasksList{
-        @apply h-auto sm:w-[520px] bg-slate-400 m-auto mt-16 flex flex-col gap-2 text-black rounded-lg p-2 shadow-md  overflow-hidden
+        @apply h-auto sm:w-[520px] p-2 m-auto mt-16 flex flex-col gap-2 bg-slate-500 text-black rounded-lg shadow-md overflow-hidden
     }
 </style>

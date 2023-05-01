@@ -22,15 +22,11 @@
 
 <style scoped>
     header#navBar{
-        @apply w-full h-20 fixed top-0 left-0 p-4 z-10 bg-slate-900 text-white flex justify-between items-center shadow-md
+        @apply w-full h-20 p-4 flex justify-between items-center fixed top-0 left-0 z-10 bg-slate-900 text-white shadow-md
     }
     
     h1{
-        @apply text-lg font-semibold
-    }
-
-    .active{
-        @apply bg-slate-400 p-2 rounded-lg shadow-md
+        @apply font-semibold text-xl
     }
 
     nav{
@@ -38,6 +34,11 @@
     }
 
     nav a{
-        @apply bg-slate-700 p-2 rounded-lg transition-all ease-in-out shadow-md hover:bg-slate-300 hover:scale-105 
-    } 
+        @apply p-2 bg-slate-700 rounded-lg shadow-md transition-all ease-in-out hover:bg-slate-300 hover:scale-105 
+    }
+
+    
+    .active{
+        @apply p-2 bg-slate-400 rounded-lg shadow-md
+    }
 </style>

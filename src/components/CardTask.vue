@@ -1,6 +1,6 @@
 <template>
-    <div class="animate__animated animate__fadeInUp">
-        <div class="cardContainer" :class="{'isVisibleDescription': isVisibleDescription,'isTaskDone': isDone }">
+    <div class="cardTaskContainer animate__animated animate__fadeInUp">
+        <div class="titleAndButtonsTask" :class="{'isVisibleDescription': isVisibleDescription,'isTaskDone': isDone }">
             <div class="titleAndToggleDescription">
                 <button @click.prevent="toogleDescription">
                     <i class="uil uil-angle-down" v-if="!isVisibleDescription"></i>
@@ -52,11 +52,8 @@
 </script>
 
 <style scoped>
-    .animate__animated,.animate__flipInX{
-        animation-fill-mode: both;
-    }
-    .cardContainer{
-        @apply bg-slate-100 rounded-lg p-2 shadow-md grid grid-cols-2 justify-items-center gap-2 
+    .titleAndButtonsTask{
+        @apply p-2 grid grid-cols-2 justify-items-center gap-2 bg-slate-100 rounded-lg shadow-md 
     }
 
     .isVisibleDescription{
@@ -72,11 +69,11 @@
     }
 
     .btnTaskContainer{
-        @apply flex gap-2 justify-self-end
+        @apply flex justify-self-end gap-2 
     }
 
     .btnTask{
-        @apply w-20 bg-blue-700 text-white p-2 rounded-lg transition-all ease-in-out shadow-md hover:bg-blue-500 hover:scale-105
+        @apply w-20 p-2 text-white rounded-lg shadow-md transition-all ease-in-out hover:scale-105
     }
 
     .done{
@@ -92,6 +89,6 @@
     }
 
     .description{
-        @apply bg-slate-100 rounded-b-lg rounded-t-none py-2 px-4 shadow-md flex justify-between items-center
+        @apply flex justify-between items-center bg-slate-100 rounded-b-lg rounded-t-none py-2 px-4 shadow-md
     }
 </style>

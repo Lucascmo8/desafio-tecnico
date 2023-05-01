@@ -16,6 +16,6 @@
 
 <style scoped>
     button{
-        @apply bg-blue-700 p-2 rounded-lg transition-all ease-in-out shadow-md float-right hover:bg-blue-500 hover:scale-105
+        @apply p-2 float-right bg-blue-700 rounded-lg shadow-md transition-all ease-in-out hover:bg-blue-500 hover:scale-105
     }
 </style>
