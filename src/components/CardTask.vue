@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="animate__animated animate__fadeInUp">
         <div class="cardContainer" :class="{'isVisibleDescription': isVisibleDescription,'isTaskDone': isDone }">
             <div class="titleAndToggleDescription">
                 <button @click.prevent="toogleDescription">
@@ -14,9 +14,11 @@
                 <button class="btnTask delete" @click="tasksStores.deleteTask(tag,page)">Excluir</button>
             </div>
         </div>
-        <div :class="{'isTaskDone': isDone}" v-if="isVisibleDescription">
-            <p>{{ description }}</p>
-        </div>
+        <transition name="exitDescription" @before-leave="beforeLeave">
+            <div class="description animate__animated animate__flipInX" :class="{'isTaskDone': isDone}" v-if="isVisibleDescription">
+                <p>{{ description }}</p>
+            </div>
+        </transition>
     </div>
 </template>
 
@@ -31,13 +33,18 @@
         data(){
             return{
                 isVisibleDescription:false,
-                isTaskDone:false
+                isTaskDone:false,
+                
             }
         },
         props:['title','description','isDone','tag','page'],
         methods:{
             toogleDescription(){
                 this.isVisibleDescription = !this.isVisibleDescription
+                
+            },
+            beforeLeave(el) {
+                el.classList.add('animate__flipOutX')
             }
         }
     }
@@ -45,6 +52,9 @@
 </script>
 
 <style scoped>
+    .animate__animated,.animate__flipInX{
+        animation-fill-mode: both;
+    }
     .cardContainer{
         @apply bg-slate-100 rounded-lg p-2 shadow-md grid grid-cols-2 justify-items-center gap-2 
     }

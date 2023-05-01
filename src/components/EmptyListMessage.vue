@@ -1,5 +1,5 @@
 <template>
-    <div class="emptyListMessage">
+    <div class="emptyListMessage animate__animated animate__fadeInUp">
         <p>Não há Tarefas aqui <i class="uil uil-confused"></i></p>
     </div>
 </template>

@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useTasksStore = defineStore('tasks', {
@@ -51,11 +50,10 @@ export const useTasksStore = defineStore('tasks', {
                 allTasks.splice(tag,1)
                 this.addTaskLocalStorage(allTasks)
                 return
-            }else{
-                const allSavedTasks = this.getSavedTasksLocalStorage()
-                allSavedTasks.splice(tag,1)
-                this.addSavedTaskLocalStorage(allSavedTasks)
             }
+            const allSavedTasks = this.getSavedTasksLocalStorage()
+            allSavedTasks.splice(tag,1)
+            this.addSavedTaskLocalStorage(allSavedTasks)
             
         },
         getSavedTasksLocalStorage() {
@@ -75,8 +73,5 @@ export const useTasksStore = defineStore('tasks', {
             this.allTasksSaved = this.getSavedTasksLocalStorage()
         },
 
-    },
-    getters:{
-    
     }
 })

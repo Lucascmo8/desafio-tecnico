@@ -1,7 +1,7 @@
 <template>
     <div id="modalForm" >
         <button id="btnCloseForm" @click="tasksStores.closeFormCreateTask"><i class="uil uil-times"></i></button>
-        <form id="FormCreateTask" @submit.prevent="tasksStores.createTaskCloseForm(titleTask,descriptionTask)">
+        <form id="FormCreateTask" class="animate__animated animate__bounceIn" @submit.prevent="tasksStores.createTaskCloseForm(titleTask,descriptionTask)" v-show="tasksStores.showFormCreateTask">
             <h2>Preencha os campos abaixo:</h2>
             <input id="titleTaskInput" type="text" placeholder="Título da tarefa" maxlength="15" required v-model="titleTask">
             <textarea name="" id="descriptionTaskInput" placeholder="Descreva os detalhes da tarefa" v-model="descriptionTask"></textarea>
@@ -22,6 +22,11 @@
             return{
                 titleTask:"",
                 descriptionTask:undefined,
+            }
+        },
+        methods:{
+            beforeLeave(el) {
+                el.classList.add('animate__flipOutX')
             }
         }
     }
