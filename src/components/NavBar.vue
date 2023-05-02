@@ -3,20 +3,16 @@
         <router-link to="/">
             <h1>Lista de Tarefas</h1>
         </router-link>
-    <nav>
-        <RouterLink to="/" :class="{'active': $route.name == 'home'}">Home</RouterLink>
-        <RouterLink to="/savedTasks" :class="{'active': $route.name == 'savedTasks'}">Tarefas salvas</RouterLink>
-      </nav>
+        <nav>
+            <RouterLink to="/" :class="{'active': $route.name == 'home'}">Home</RouterLink>
+            <RouterLink to="/savedTasks" :class="{'active': $route.name == 'savedTasks'}">Tarefas salvas</RouterLink>
+        </nav>
     </header>
 </template>
 
 <script>
-    
     export default{
         name:"NavBar",
-        methods:{
-
-        }
     }
 </script>
 

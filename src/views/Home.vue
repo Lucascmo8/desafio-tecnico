@@ -2,9 +2,9 @@
   <main>
     <BtnOpenForm />
     <Teleport to="body">
-      <FormCreatedTask v-if="tasksStores.showFormCreateTask"/>
+      <FormCreatedTask v-if="tasksStores.isFormCreateTaskVisible"/>
     </Teleport>
-    <TasksList :tasks="tasksStores.allTasksCreated" page="home"/>
+    <TasksList :tasks="tasksStores.allNewsTasks" page="home"/>
   </main>
 </template>
 

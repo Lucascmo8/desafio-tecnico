@@ -1,6 +1,6 @@
 <template>
   <main>
-    <TasksList :tasks="tasksStores.allTasksSaved" page="saved"/>
+    <TasksList :tasks="tasksStores.savedTasks" page="saved"/>
   </main>
 </template>
 

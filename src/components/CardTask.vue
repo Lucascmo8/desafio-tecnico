@@ -10,8 +10,8 @@
             </div>
             <div class="btnTaskContainer">
                 <button class="btnTask done" v-if="!isDone" @click="tasksStores.completeTask(tag)">Concluir</button>
-                <button class="btnTask save" v-else v-show="page == 'home'" @click="tasksStores.saveTask(tag)">Salvar</button>
-                <button class="btnTask delete" @click="tasksStores.deleteTask(tag,page)">Excluir</button>
+                <button class="btnTask save" v-else v-show="page == 'home'" @click="tasksStores.moveTaskToSavedList(tag)">Salvar</button>
+                <button class="btnTask delete" @click="tasksStores.removeTask(tag,page)">Excluir</button>
             </div>
         </div>
         <transition name="exitDescription" @before-leave="beforeLeave">
@@ -34,7 +34,6 @@
             return{
                 isVisibleDescription:false,
                 isTaskDone:false,
-                
             }
         },
         props:['title','description','isDone','tag','page'],

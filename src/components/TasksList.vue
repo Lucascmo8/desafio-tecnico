@@ -22,7 +22,6 @@
             EmptyListMessage,
         },
     }
-
 </script>
 
 <style scoped>
